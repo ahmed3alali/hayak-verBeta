@@ -16,8 +16,13 @@ app.use(cors({
 // Allow only requests from your frontend's domain
 
 
-
+import path from "path";
+// import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 import errorMiddleWare from './Middlewares/errors.js';
+
+
 
 // Handle uncaught exceptions
 process.on('uncaughtException', (err) => {
@@ -50,10 +55,23 @@ app.use(cookieParser());
 import productRoutes from "./Routes/product.js";
 import userRoutes from "./Routes/auth.js";
 import mongoose from 'mongoose';
+import { fileURLToPath } from 'url';
 
 // Use Routes
 app.use("/api/v1/", productRoutes);
 app.use("/api/v1/", userRoutes);
+
+
+if (process.env.NODE_ENV==="PRODUCTION") {
+
+    app.use(express.static(path.join(__dirname,"../frontend/build")));
+    app.get('*',(req,res)=>{
+
+res.sendFile(path.resolve(__dirname,"../frontend/build/index.html"));
+
+    })
+    
+}
 
 // Error Middleware
 app.use(errorMiddleWare);
