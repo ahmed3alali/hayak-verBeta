@@ -3,15 +3,10 @@ import express from 'express';
 
 import cookieParser from 'cookie-parser';
 
-import cors from "cors";
+
 const app = express();
 
-app.use(cors({
-    origin: "http://localhost:3000", // Change this to your actual frontend URL in production
-    credentials: true, // Allows cookies and authentication headers
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
-  }));
+
 
 // Allow only requests from your frontend's domain
 
