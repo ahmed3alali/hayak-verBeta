@@ -31,7 +31,12 @@ process.on('uncaughtException', (err) => {
     process.exit(1);
 });
 
-dotenv.config();
+
+if (process.env.NODE_ENV!=='PRODUCTION') {
+    dotenv.config();
+    
+}
+
 
 const MongoUrl = process.env.DB_LOCAL_URI;
 mongoose.connect(MongoUrl).then(()=>{
