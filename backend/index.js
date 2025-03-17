@@ -4,11 +4,14 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import path from "path";
 import errorMiddleWare from './Middlewares/errors.js';
+import cors from 'cors';
 const app = express();
 
-
-
-  
+app.use(cors({
+    origin: 'https://hayak-demo.onrender.com',  // replace with your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],  // Specify the allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'],  // Specify the allowed headers
+  }));
 
 
 
