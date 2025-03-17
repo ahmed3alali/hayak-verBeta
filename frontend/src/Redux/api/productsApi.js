@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-const baseUrl = '/api/v1';
+
 
 export const productApi = createApi({
 
     reducerPath: "productApi",
-    baseQuery: fetchBaseQuery({ baseUrl }),
+    baseQuery: fetchBaseQuery({ baseUrl: "/api/v1" }),
     keepUnusedDataFor: 30,
 
     tagTypes: ["Product", "AdminProducts"],

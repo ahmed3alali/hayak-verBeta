@@ -1,13 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setIsAuthenticated, setLoading, setUser } from "../features/userSlice.js"
 
-const baseUrl = '/api/v1'
+
 export const userApi = createApi({
     reducerPath: "userApi",
-    baseQuery: fetchBaseQuery({ baseUrl
-
-        
-    }),
+    baseQuery: fetchBaseQuery({ baseUrl: "/api/v1" }),
     keepUnusedDataFor: 30,
 tagTypes: ["User"],
     endpoints: (builder) => ({

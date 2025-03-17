@@ -2,21 +2,21 @@ import dotenv from 'dotenv';
 import express from 'express';
 
 import cookieParser from 'cookie-parser';
-
-
+import path from "path";
+import errorMiddleWare from './Middlewares/errors.js';
 const app = express();
 
 
 
   
-// Allow only requests from your frontend's domain
 
 
-import path from "path";
+
+
 // import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-import errorMiddleWare from './Middlewares/errors.js';
+
 
 
 
