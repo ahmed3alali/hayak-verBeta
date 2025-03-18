@@ -55,7 +55,7 @@ AhmedJob: "Social Media & Marketing",
 AhmedSLoc: "Homs, Syria",
 AboutUs: "About Us",
 TableNo: "Enter Table No:",
-Seraj: "Seraj Hariri",
+Seraj: "Eng.Seraj Hariri",
 Sloc:"Saudi Arabia",
 Sjob:"Marketing & Customer Service Dep. Manager"
     },
@@ -113,7 +113,7 @@ AhmedJob: "إدارة التواصل الاجتماعي والتسويق",
 AhmedSLoc: "حمص - سوريا",
 AboutUs: "من نحن",
 TableNo: "من فضلك ادخل رقم الطاولة",
-Seraj: "سراج حريري",
+Seraj: "المهندس سراج حريري ",
 Sloc:"المملكة العربية السعودية",
 Sjob:"مدير قسم خدمة العملاء والتسويق"
     
