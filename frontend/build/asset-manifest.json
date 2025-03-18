@@ -1,22 +1,23 @@
 {
   "files": {
     "main.css": "/static/css/main.99a57567.css",
-    "main.js": "/static/js/main.804ef3dd.js",
+    "main.js": "/static/js/main.48f6749c.js",
     "static/media/coffeeBg.jpg": "/static/media/coffeeBg.b3584c460ed5de17b86f.jpg",
     "static/media/BreakfastBg.jpg": "/static/media/BreakfastBg.e0f87c7d191e5da1480a.jpg",
     "static/media/ahmedAlali.jpeg": "/static/media/ahmedAlali.2c2816ade222b76c705d.jpeg",
     "static/media/syria.png": "/static/media/syria.5d8fa5ebb717a9118552.png",
     "static/media/ward.jpeg": "/static/media/ward.88ad1962930433576883.jpeg",
     "static/media/ahmedSibai.jpeg": "/static/media/ahmedSibai.9e276cd18965734f1bbe.jpeg",
+    "static/media/seraj.jpg": "/static/media/seraj.f85231ea689839c2908e.jpg",
     "static/media/hayakLogoGreen.png": "/static/media/hayakLogoGreen.e41ef9e7304453a6aa5a.png",
     "static/media/hayakLogo.png": "/static/media/hayakLogo.80d37f3ed921d572fa6d.png",
     "static/media/withlove.png": "/static/media/withlove.ef55daa4d8cc2fc4deb6.png",
     "index.html": "/index.html",
     "main.99a57567.css.map": "/static/css/main.99a57567.css.map",
-    "main.804ef3dd.js.map": "/static/js/main.804ef3dd.js.map"
+    "main.48f6749c.js.map": "/static/js/main.48f6749c.js.map"
   },
   "entrypoints": [
     "static/css/main.99a57567.css",
-    "static/js/main.804ef3dd.js"
+    "static/js/main.48f6749c.js"
   ]
 }
