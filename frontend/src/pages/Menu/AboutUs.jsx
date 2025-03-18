@@ -7,7 +7,7 @@ import ahmedAlali from "../../images/ahmedAlali.jpeg";
 import ahmedSibai from "../../images/ahmedSibai.jpeg";
 import ward from "../../images/ward.jpeg"
 import { Phone } from "lucide-react";
-
+import seraj from "../../images/seraj.jpg"
 import { MapPin } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 
@@ -83,6 +83,23 @@ const AboutUs = () => {
 
                 
           </div>
+
+
+          <div className="text-center">
+            <img src={seraj} className="w-20 h-20 object-cover rounded-full mx-auto" alt="Ward Khalaf" />
+            <p className="text-sm mt-2">{t("Seraj")}</p>
+            <p className="text-xs text-gray-500 mt-2">{t("Sjob")}</p>
+          
+            <div className="contact flex justify-center gap-2 flex-nowrap mt-1">
+  
+  <MapPin className="w-5 h-5 text-gray-600" />
+  <p className="text-xs whitespace-nowrap">{t("Sloc")}</p>
+</div>
+
+                
+          
+          </div>
+
         </div>
       </div>
     </div>

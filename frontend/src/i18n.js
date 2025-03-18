@@ -54,8 +54,10 @@ AhmedS: "Eng.Ahmed Sibai",
 AhmedJob: "Social Media & Marketing",
 AhmedSLoc: "Homs, Syria",
 AboutUs: "About Us",
-TableNo: "Enter Table No:"
-
+TableNo: "Enter Table No:",
+Seraj: "Seraj Hariri",
+Sloc:"Saudi Arabia",
+Sjob:"Marketing & Customer Service Dep. Manager"
     },
   },
   ar: {
@@ -110,7 +112,10 @@ AhmedS: "المهندس أحمد السباعي",
 AhmedJob: "إدارة التواصل الاجتماعي والتسويق",
 AhmedSLoc: "حمص - سوريا",
 AboutUs: "من نحن",
-TableNo: "من فضلك ادخل رقم الطاولة"
+TableNo: "من فضلك ادخل رقم الطاولة",
+Seraj: "سراج حريري",
+Sloc:"المملكة العربية السعودية",
+Sjob:"مدير قسم خدمة العملاء والتسويق"
     
     },
   },
