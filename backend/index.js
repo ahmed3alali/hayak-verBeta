@@ -6,25 +6,14 @@ import path from "path";
 import errorMiddleWare from './Middlewares/errors.js';
 import cors from 'cors';
 const app = express();
-const allowedOrigins = [
-    "https://hayak-ver-beta-jkhg.vercel.app"
-   
-];
-
 const corsConfig = {
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
+    origin: "https://hayak-ver-beta-jkhg.vercel.app",  // ✅ Define it directly
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
 };
-
 app.use(cors(corsConfig));
 app.options("*", cors(corsConfig)); // Allow preflight requests
+ // Allow preflight requests
 
 
 
