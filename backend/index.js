@@ -6,15 +6,22 @@ import path from "path";
 import errorMiddleWare from './Middlewares/errors.js';
 import cors from 'cors';
 const app = express();
+const allowedOrigins = process.env.CLIENT_URLS.split(",");
 
 const corsConfig = {
-    origin: process.env.Client_URL,
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
     credentials: true,
-    method: ["GET", "POST", "PUT", "DELETE"],
-  };
-  
-  app.options("", cors(corsConfig));
-  app.use(cors(corsConfig));
+    methods: ["GET", "POST", "PUT", "DELETE"],
+};
+
+app.use(cors(corsConfig));
+app.options("*", cors(corsConfig));
 
 
 
