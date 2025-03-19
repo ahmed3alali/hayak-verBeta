@@ -4,7 +4,8 @@ import { setIsAuthenticated, setLoading, setUser } from "../features/userSlice.j
 
 export const userApi = createApi({
     reducerPath: "userApi",
-    baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BACKEND_URL }), // Use the env variable here
+    baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BACKEND_URL }), 
+    credentials: "include" ,// Use the env variable here
     keepUnusedDataFor: 30,
 
 tagTypes: ["User"],
