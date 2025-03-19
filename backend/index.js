@@ -7,18 +7,17 @@ import errorMiddleWare from './Middlewares/errors.js';
 import cors from 'cors';
 const app = express();
 
-app.use(cors({
-    origin: 'https://hayak-demo.onrender.com',  // replace with your frontend URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],  // Specify the allowed methods
-    allowedHeaders: ['Content-Type', 'Authorization'],  // Specify the allowed headers
-  }));
+const corsConfig = {
+    origin: process.env.Client_URL,
+    credentials: true,
+    method: ["GET", "POST", "PUT", "DELETE"],
+  };
+  
+  app.options("", cors(corsConfig));
+  app.use(cors(corsConfig));
 
 
 
-
-// import { fileURLToPath } from "url";
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 
 
@@ -51,6 +50,8 @@ console.log(error);
 
 
 
+
+
 app.use(express.json({ limit: '10mb' }));
 app.use(cookieParser());
 
@@ -66,16 +67,7 @@ app.use("/api/v1/", productRoutes);
 app.use("/api/v1/", userRoutes);
 
 
-if (process.env.NODE_ENV==="PRODUCTION") {
 
-    app.use(express.static(path.join(__dirname,"../frontend/build")));
-    app.get('*',(req,res)=>{
-
-res.sendFile(path.resolve(__dirname,"../frontend/build/index.html"));
-
-    })
-    
-}
 
 // Error Middleware
 app.use(errorMiddleWare);
@@ -84,6 +76,10 @@ app.use(errorMiddleWare);
 const server = app.listen(process.env.PORT, () => {
     console.log(`Server working on ${process.env.PORT} in ${process.env.NODE_ENV} mode.`);
 });
+
+app.get("/", (req, res) => {
+    res.send("Hello World");
+  });
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err) => {
