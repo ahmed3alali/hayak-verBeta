@@ -5,7 +5,7 @@ import { userApi } from './userApi';
 export const authApi = createApi({
     reducerPath: "authApi",
     baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BACKEND_URL }),
-    credentials: "include" , // Use the env variable here
+
     keepUnusedDataFor: 30,
 
 
