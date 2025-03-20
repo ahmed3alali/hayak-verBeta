@@ -7,12 +7,14 @@ import errorMiddleWare from './Middlewares/errors.js';
 import cors from 'cors';
 const app = express();
 const corsConfig = {
-    origin: "https://hayak-ver-beta-jkhg.vercel.app",  // ✅ Define it directly
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: "https://hayak-ver-beta-jkhg.vercel.app",  // ✅ Allowed frontend URL
+    credentials: true,  // ✅ Allow credentials (cookies, authorization headers)
+    allowedHeaders: ["Content-Type", "Authorization"], // ✅ Correct property name
+    methods: ["GET", "POST", "PUT", "DELETE"], // ✅ Allowed HTTP methods
 };
-app.use(cors(corsConfig));
-app.options("*", cors(corsConfig)); // Allow preflight requests
+app.use(cors(corsConfig)); 
+app.options("*", cors(corsConfig)); // ✅ Allow preflight requests
+// Allow preflight requests
  // Allow preflight requests
 
 
