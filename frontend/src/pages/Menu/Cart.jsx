@@ -66,7 +66,7 @@ const Cart = () => {
                           type="text"
                           value={product.quantity}
                           readOnly
-                          className="w-12 text-center text-gray-900 dark:text-white font-semibold"
+                          className="w-12 text-center text-gray-900 dark:text-white font-semibold border-none"
                         />
                         <button
                           onClick={() => handleQuantityChange(index, "increase")}
