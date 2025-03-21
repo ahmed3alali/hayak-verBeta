@@ -8,7 +8,7 @@ import cors from 'cors';
 import loginBeta from "../backend/Controllers/authBeta.js"
 const app = express();
 app.use(cors({
-    origin: 'http://localhost:3000',  // replace with your frontend URL
+    origin: 'https://hayak-beta.vercel.app',  // replace with your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],  // Specify the allowed methods
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials:true,  // Specify the allowed headers
