@@ -57,7 +57,14 @@ AboutUs: "About Us",
 TableNo: "Enter Table No:",
 Seraj: "Eng.Seraj Hariri",
 Sloc:"Saudi Arabia",
-Sjob:"Marketing & Customer Service Dep. Manager"
+Sjob:"Marketing & Customer Service Dep. Manager",
+MyCart:"My Cart",
+Remove:"Remove",
+OrderSummary:"Order Summary",
+OriginalPrice:"Original Price",
+Tax:"Tax",
+Total:"Total"
+
     },
   },
   ar: {
@@ -115,7 +122,14 @@ AboutUs: "من نحن",
 TableNo: "من فضلك ادخل رقم الطاولة",
 Seraj: "المهندس سراج حريري ",
 Sloc:"المملكة العربية السعودية",
-Sjob:"مدير قسم خدمة العملاء والتسويق"
+Sjob:"مدير قسم خدمة العملاء والتسويق",
+MyCart:"سلتي",
+Remove:"إزالة",
+OrderSummary:"طلبي",
+OriginalPrice:"السعر العام",
+Tax:"الضرائب",
+Total:"الإجمالي"
+
     
     },
   },

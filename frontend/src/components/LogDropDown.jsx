@@ -1,37 +1,30 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useLazyLogoutQuery } from "../Redux/api/authApi";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { setAuth, logout } from "../Redux/slices/authSlice";
 import { persistor } from "../Redux/store";
-import { setIsAuthenticated, setUser } from "../Redux/features/userSlice";
 
-const LogDropDown = ({ userName }) => {
+const LogDropDown = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [triggerLogout] = useLazyLogoutQuery();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.auth);
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
   const dropdownRef = useRef(null);
 
   const handleLogout = async () => {
     try {
-      await triggerLogout();
-      dispatch(setUser(null));
-      dispatch(setIsAuthenticated(false));
-
+      dispatch(logout()); // Reset authentication state in Redux
       persistor.purge().then(() => {
         navigate("/adminLogin");
-        window.location.reload();
+        window.location.reload(); // Ensure logout state is reflected in UI
       });
-
-      navigate(0);
     } catch (error) {
       console.error("Logout error:", error);
     }
   };
 
   const handleClick = () => {
-    if (!user) {
+    if (!isAuthenticated) {
       navigate("/adminLogin");
     } else {
       setIsOpen(!isOpen);
@@ -71,7 +64,6 @@ const LogDropDown = ({ userName }) => {
     <div className="relative" ref={dropdownRef}>
       {/* Button */}
       <button
-        data-tooltip-target="tooltip-profile"
         type="button"
         className="inline-flex flex-col items-center justify-center px-5 rounded-e-full hover:bg-gray-50 dark:hover:bg-gray-800 group"
         onClick={handleClick}
@@ -88,17 +80,8 @@ const LogDropDown = ({ userName }) => {
         <span className="sr-only">Profile</span>
       </button>
 
-      <div
-        id="tooltip-profile"
-        role="tooltip"
-        className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700"
-      >
-        Profile
-        <div className="tooltip-arrow" data-popper-arrow></div>
-      </div>
-
       {/* Dropdown Menu */}
-      {isOpen && user && (
+      {isOpen && isAuthenticated && (
         <div className="absolute right-0 bottom-full mb-2 w-44 bg-white divide-y divide-gray-100 rounded-lg shadow-lg dark:bg-gray-700">
           <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
             <li>
@@ -123,8 +106,6 @@ const LogDropDown = ({ userName }) => {
               >
                 My Orders
               </button>
-
-
             </li>
             <li>
               <button

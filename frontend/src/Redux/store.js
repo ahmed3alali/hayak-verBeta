@@ -5,7 +5,7 @@ import userReducer from './features/userSlice';
 import { productApi } from './api/productsApi';
 import { authApi } from './api/authApi';
 import { userApi } from './api/userApi';
-
+import authReducer from './slices/authSlice'; 
 // Config for Redux Persist
 const persistConfig = {
   key: 'root',
@@ -13,7 +13,7 @@ const persistConfig = {
 };
 
 // Wrap your reducer with persistReducer
-const persistedReducer = persistReducer(persistConfig, userReducer);
+const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
   reducer: {

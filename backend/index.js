@@ -5,15 +5,18 @@ import cookieParser from 'cookie-parser';
 import path from "path";
 import errorMiddleWare from './Middlewares/errors.js';
 import cors from 'cors';
+import loginBeta from "../backend/Controllers/authBeta.js"
 const app = express();
-const corsConfig = {
-    origin: "https://hayak-ver-beta-jkhg.vercel.app",  // ✅ Allowed frontend URL
-    credentials: true,  // ✅ Allow credentials (cookies, authorization headers)
-    allowedHeaders: ["Content-Type", "Authorization"], // ✅ Correct property name
-    methods: ["GET", "POST", "PUT", "DELETE"], // ✅ Allowed HTTP methods
-};
-app.use(cors(corsConfig)); 
-app.options("*", cors(corsConfig)); // ✅ Allow preflight requests
+app.use(cors({
+    origin: 'http://localhost:3000',  // replace with your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],  // Specify the allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials:true,  // Specify the allowed headers
+  }));
+
+
+
+
 // Allow preflight requests
  // Allow preflight requests
 
@@ -67,7 +70,7 @@ import { fileURLToPath } from 'url';
 app.use("/api/v1/", productRoutes);
 app.use("/api/v1/", userRoutes);
 
-
+app.use("/api/v1",loginBeta);
 
 
 // Error Middleware

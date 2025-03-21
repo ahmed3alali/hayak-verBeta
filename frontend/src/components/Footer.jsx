@@ -6,15 +6,15 @@ import { setIsAuthenticated, setUser } from '../Redux/features/userSlice';
 import { persistor } from '../Redux/store';
 import withLove from '../images/withlove.png';
 import LogDropDown from './LogDropDown';
-import { Search, Info } from 'lucide-react'; // Importing icons
+import { Search, Info, ShoppingCart , Person} from 'lucide-react'; // Importing icons
 
 const Footer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [triggerLogout] = useLazyLogoutQuery();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.auth);
-
+  const { isAuthenticated,user } = useSelector((state) => state.auth);
+console.log(user);
   const handleHomePageClick = () => {
     navigate('/');
   };
@@ -22,6 +22,16 @@ const Footer = () => {
 
 const handleSearchClick = () => {
     navigate('/searchPage');
+  };
+
+
+  const handleCartClick = () => {
+    navigate('/cart');
+  };
+
+
+  const handleSignInClick = () => {
+    navigate('/adminLogin');
   };
 
 
@@ -108,7 +118,15 @@ const handleSearchClick = () => {
           </button>
 
           {/* Profile Dropdown */}
-          <button
+        
+
+
+
+
+          {/* Conditionally Render Cart or Sign In Button */}
+          {isAuthenticated ? (
+            // If authenticated, show person icon (sign in)
+            <button
             data-tooltip-target="tooltip-profile"
             type="button"
             className="inline-flex flex-col items-center justify-center px-5 rounded-e-full hover:bg-gray-50 dark:hover:bg-gray-800 group"
@@ -116,6 +134,28 @@ const handleSearchClick = () => {
             <LogDropDown />
             <span className="sr-only">Profile</span>
           </button>
+          ) : (
+            // If not authenticated, show cart icon
+            <button
+              data-tooltip-target="tooltip-cart"
+              type="button"
+              className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+              onClick={handleCartClick}
+            >
+              <ShoppingCart className="w-5 h-5 mb-1 text-gray-500 group-hover:text-blue-600" />
+              <span className="sr-only">My Cart</span>
+            </button>
+          )}
+
+
+
+
+        
+
+
+
+        
+        
         </div>
       </div>
     </div>

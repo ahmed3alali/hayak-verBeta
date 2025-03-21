@@ -13,6 +13,10 @@ import AboutUs from "./pages/Menu/AboutUs";
 import SearchPage from "./pages/Menu/SearchPage";
 import ForgotPassword from "./pages/admin/ForgotPassword";
 import AdminOrders from "./pages/admin/AdminOrders";
+import Cart from "./pages/Menu/Cart";
+import LoginTest from "./pages/loginTest/LoginTest";
+import Login from "./pages/loginTest/LoginTest";
+
 
 function App() {
   return (
@@ -22,7 +26,7 @@ function App() {
           <Toaster position="top-center" />
           <div>
             <Routes>
-              <Route path="/adminLogin" element={<AdminLogin />} />
+              <Route path="/adminLogin" element={<AdminLogin/>} />
               <Route path="/" element={<MenuPage />} />
               <Route path="/newProduct" element={<NewProduct/>} />
               <Route path="/updateProduct" element={<UpdateProduct/>} />
@@ -31,6 +35,7 @@ function App() {
               <Route path="/searchPage" element={<SearchPage/>} />
               <Route path="/forgot" element={<ForgotPassword/>} />
               <Route path="/myOrders" element={<AdminOrders/>}/>
+              <Route path="/cart" element={<Cart/>}/>
             </Routes>
             <Footer/>
           </div>

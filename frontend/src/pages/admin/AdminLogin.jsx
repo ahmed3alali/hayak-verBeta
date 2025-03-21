@@ -1,54 +1,36 @@
-
-import React, { useEffect, useState } from 'react'
-import { useLoginMutation } from '../../Redux/api/authApi';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setAuth } from '../../Redux/slices/authSlice';
 import toast from 'react-hot-toast';
-import { useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import logo from "../../images/hayakLogoGreen.png"
 import { useTranslation } from 'react-i18next';
-
+import logo from "../../images/hayakLogo.png"
 const AdminLogin = () => {
-
-
-
-
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [login, { isLoading, error, data }] = useLoginMutation();
-const {isAuthenticated} = useSelector((state)=>state.auth);
-console.log(data);
-
-useEffect(() => {
-  if (isAuthenticated) {
-    navigate("/");
-  }
-
-  if (error) {  // ✅ Only trigger toast if `error` exists
-    toast.error(error?.data?.message);
-  }
-}, [isAuthenticated, error, navigate]); // ✅ Correct dependency array
-
-
-
-  const submitHandler = (e) => {
-
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-    const loginData = {
+    try {
+      const response = await axios.post('http://localhost:4000/api/v1/login', { email, password }, { withCredentials: true });
+      const { token,user } = response.data;
+      
+      // Dispatch loginSuccess to save token in Redux state and localStorage
+      dispatch(setAuth({ token,user }));
 
-      email, password
-
-    };
-
-    console.log(loginData);
-    login(loginData)
+      // Redirect to homepage on successful login
+      navigate("/"); // This will take you to the homepage ("/")
+    } catch (error) {
+      console.error(error);
+      toast.error("Login failed, please try again!");
+    }
   };
 
-const {t} = useTranslation();
+
   return (
     <div>
 <section class="bg-[#233B3D]  dark:bg-gray-900">

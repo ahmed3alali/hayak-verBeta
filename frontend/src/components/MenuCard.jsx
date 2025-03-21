@@ -1,37 +1,44 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next';
+import { addToCart } from "../utils/cartUtils";
 
-
-const MenuCard = ({ item }) => {
+const MenuCard = ({ item ,product}) => {
 
 const {t} = useTranslation();
 
-  const handleAddToCart = () => {
-    const tableNumber = prompt(t("TableNo"));
 
-    // Validate input (ensure it's a number and not empty)
-    if (!tableNumber || isNaN(tableNumber) || tableNumber <= 0) {
-      alert("Please enter a valid table number!");
-      return;
-    }
-
-    const order = {
-      name: item.name,
-      image: item.images[0]?.url, // Ensure this is a URL
-      tableNumber: tableNumber, // User-provided table number
-    };
-
-    // Get existing orders from localStorage or create an empty array
-    const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
-
-    // Add new order
-    existingOrders.push(order);
-
-    // Save back to localStorage
-    localStorage.setItem("orders", JSON.stringify(existingOrders));
-
-    alert(`Order for Table ${tableNumber} added successfully!`);
+const handleAddToCart_s = () => {
+  addToCart(product);
+ 
+};
+const handleAddToCart = () => {
+  // Create a cart object with the necessary details
+  const cart = {
+    id: item._id, // Assuming `item._id` is the unique identifier for the product
+    name: item.name,
+    image: item.images[0]?.url,
+    price: item.price,
+    quantity: 1, // Default quantity when adding for the first time
   };
+
+  // Get existing cart from localStorage
+  const existingCart = JSON.parse(localStorage.getItem("myCart")) || [];
+
+  // Check if the product already exists in the cart
+  const existingProductIndex = existingCart.findIndex((product) => product.id === cart.id);
+
+  if (existingProductIndex !== -1) {
+    // Product exists, increase its quantity
+    existingCart[existingProductIndex].quantity += 1;
+  } else {
+    // Product doesn't exist, add it to the cart
+    existingCart.push(cart);
+  }
+
+  // Save the updated cart back to localStorage
+  localStorage.setItem("myCart", JSON.stringify(existingCart));
+  alert("Item added to cart!");
+};
 
     return (
       <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden animate-fade-in">
