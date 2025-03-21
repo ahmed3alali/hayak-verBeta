@@ -16,7 +16,7 @@ const AdminLogin = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/v1/login', { email, password }, { withCredentials: true });
+      const response = await axios.post('https://hayak-ver-beta.vercel.app/api/v1/login', { email, password }, { withCredentials: true });
       const { token,user } = response.data;
       
       // Dispatch loginSuccess to save token in Redux state and localStorage
