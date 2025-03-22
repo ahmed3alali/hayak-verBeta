@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { setAuth } from '../../Redux/slices/authSlice';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-import logo from "../../images/hayakLogo.png"
+import logo from "../../images/hayakLogoGreen.png"
 const AdminLogin = () => {
   const { t } = useTranslation();
   const [email, setEmail] = useState('');

@@ -6,6 +6,8 @@ import path from "path";
 import errorMiddleWare from './Middlewares/errors.js';
 import cors from 'cors';
 import loginBeta from "../backend/Controllers/authBeta.js"
+import orderRouter from "../backend/Routes/OrderRouter.js"
+
 const app = express();
 app.use(cors({
     origin: 'https://hayak-beta.vercel.app',  // replace with your frontend URL
@@ -71,6 +73,7 @@ app.use("/api/v1/", productRoutes);
 app.use("/api/v1/", userRoutes);
 
 app.use("/api/v1",loginBeta);
+app.use("/api/v1", orderRouter);
 
 
 // Error Middleware

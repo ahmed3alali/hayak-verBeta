@@ -19,7 +19,7 @@ const Login = ({ setLoggedInUser }) => {
         e.preventDefault();
         try {
             const res = 
-                await axios.post('http://localhost:4000/api/v1/login', 
+                await axios.post('https://hayak-ver-beta.vercel.app/api/v1/login', 
             {
                 username,
                 password
