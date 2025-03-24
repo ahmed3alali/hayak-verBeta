@@ -4,7 +4,7 @@ import Product from "../Models/productModel.js"; // Import Product model
 // Controller for creating an order
 export const createOrder = async (req, res) => {
   try {
-    const { items, totalAmount, notes } = req.body;
+    const { items, totalAmount, notes, tabelNo } = req.body;
 
     // Validate the items
     const products = await Product.find({ _id: { $in: items.map((item) => item.productId) } });
@@ -20,15 +20,16 @@ export const createOrder = async (req, res) => {
         quantity: item.quantity,
         price: item.price,
       })),
-      totalAmount: totalAmount,
-      notes: notes,
+      totalAmount,
+      notes,
+      tabelNo,
     });
 
     // Save the order to the database
     await newOrder.save();
 
     return res.status(201).json({
-      message: "Order placed successfully!",
+      message: `Order #${newOrder.orderNumber} placed successfully!`,
       order: newOrder,
     });
   } catch (error) {
@@ -39,44 +40,42 @@ export const createOrder = async (req, res) => {
 
 // Controller to get all orders
 export const getOrders = async (req, res) => {
-    try {
-      // Fetch all orders from the database
-      const orders = await Order.find().populate('items.productId'); // Assuming the items array has productId and is populated with product info
-  
-      if (!orders) {
-        return res.status(404).json({ message: "No orders found." });
-      }
-  
-      return res.status(200).json(orders); // Return all orders in response
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Failed to retrieve orders. Please try again." });
+  try {
+    // Fetch all orders from the database, sorted by orderNumber
+    const orders = await Order.find().sort("orderNumber").populate("items.productId");
+
+    if (!orders.length) {
+      return res.status(404).json({ message: "No orders found." });
     }
-  };
 
+    return res.status(200).json(orders);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to retrieve orders. Please try again." });
+  }
+};
 
-  // Controller to update order status to "completed"
+// Controller to update order status to "completed"
 export const completeOrder = async (req, res) => {
-    try {
-      const { orderId } = req.params; // Get order ID from the URL parameter
-      
-      // Find the order by ID
-      const order = await Order.findById(orderId);
-      if (!order) {
-        return res.status(404).json({ message: "Order not found" });
-      }
-  
-      // Set the status to "completed"
-      order.status = "completed";
-      await order.save();
-  
-      return res.status(200).json({
-        message: "Order marked as completed!",
-        order: order,
-      });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Failed to complete order. Please try again." });
+  try {
+    const { orderId } = req.params; // Get order ID from the URL parameter
+
+    // Find the order by ID
+    const order = await Order.findById(orderId);
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
     }
-  };
-  
+
+    // Set the status to "completed"
+    order.status = "completed";
+    await order.save();
+
+    return res.status(200).json({
+      message: `Order #${order.orderNumber} marked as completed!`,
+      order: order,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to complete order. Please try again." });
+  }
+};

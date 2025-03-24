@@ -2,6 +2,8 @@ export const PRODUCT_CATEGORIES = [
     "Hot Drinks",
     "Pastery",
     "Coffee",
-    'Burger'
+    'Burger',
+    "Arabic Sweet",
+    "Western Sweet"
    
   ];

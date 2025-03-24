@@ -7,6 +7,7 @@ import { persistor } from '../Redux/store';
 import withLove from '../images/withlove.png';
 import LogDropDown from './LogDropDown';
 import { Search, Info, ShoppingCart , Person} from 'lucide-react'; // Importing icons
+import Avatar from './Avatar';
 
 const Footer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,6 +23,10 @@ console.log(user);
 
 const handleSearchClick = () => {
     navigate('/searchPage');
+  };
+
+  const adminPanelNavigator = () => {
+    navigate('/adminPanel');
   };
 
 
@@ -130,8 +135,9 @@ const handleSearchClick = () => {
             data-tooltip-target="tooltip-profile"
             type="button"
             className="inline-flex flex-col items-center justify-center px-5 rounded-e-full hover:bg-gray-50 dark:hover:bg-gray-800 group"
+          onClick={adminPanelNavigator}
           >
-            <LogDropDown />
+            <Avatar/>
             <span className="sr-only">Profile</span>
           </button>
           ) : (

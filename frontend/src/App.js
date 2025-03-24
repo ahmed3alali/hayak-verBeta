@@ -16,6 +16,7 @@ import AdminOrders from "./pages/admin/AdminOrders";
 import Cart from "./pages/Menu/Cart";
 import LoginTest from "./pages/loginTest/LoginTest";
 import Login from "./pages/loginTest/LoginTest";
+import AdminPanel from "./pages/admin/AdminPanel";
 
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
               <Route path="/forgot" element={<ForgotPassword/>} />
               <Route path="/myOrders" element={<AdminOrders/>}/>
               <Route path="/cart" element={<Cart/>}/>
+              <Route path="/adminPanel" element={<AdminPanel/>}/>
+              
             </Routes>
             <Footer/>
           </div>

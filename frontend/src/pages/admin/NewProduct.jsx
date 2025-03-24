@@ -65,7 +65,7 @@ const NewProduct = () => {
               <div>
                 <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{t("Category")}</label>
                 <select id="category" name="category" required value={category} onChange={onChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                <option value="">Select category</option>
+                <option value="">{t("SelectCategory")}</option>
   <option value="Burger">Burger</option>
   <option value="Pastery">Pastery</option>
   <option value="Coffee">Coffee</option>
@@ -77,11 +77,11 @@ const NewProduct = () => {
 
               <div className="sm:col-span-2">
                 <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{t("Description")}</label>
-                <textarea id="description" rows="8" required className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your description here" value={description} name="description" onChange={onChange}></textarea>
+                <textarea id="description" rows="8" required className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={t("Description")} value={description} name="description" onChange={onChange}></textarea>
               </div>
             </div>
-            <button type="submit" className="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-              Add product
+            <button type="submit" className="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800 bg-green-600">
+            {t("AddProduct")}
             </button>
           </form>
         </div>

@@ -40,7 +40,7 @@ export const newProduct = async (req, res) => {
 
 
 
-    req.body.user = req.user._id
+   
 
     const product = await theProduct.create(req.body)
     res.status(200).json({

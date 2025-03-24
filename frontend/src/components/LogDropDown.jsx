@@ -13,6 +13,7 @@ const LogDropDown = () => {
 
   const handleLogout = async () => {
     try {
+      
       dispatch(logout()); // Reset authentication state in Redux
       persistor.purge().then(() => {
         navigate("/adminLogin");

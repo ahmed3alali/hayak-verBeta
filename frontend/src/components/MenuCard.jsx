@@ -37,10 +37,12 @@ const handleAddToCart = () => {
 
   // Save the updated cart back to localStorage
   localStorage.setItem("myCart", JSON.stringify(existingCart));
-  alert("Item added to cart!");
+  alert(t("addedCart"));
+
 };
 
     return (
+      
       <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden animate-fade-in">
         <div className="relative aspect-[4/3] overflow-hidden">
         <img

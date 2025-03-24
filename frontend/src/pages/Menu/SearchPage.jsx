@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useGetProductsQuery } from "../../Redux/api/productsApi";
 import MenuCard from "../../components/MenuCard";
 import Navbar from "../../components/Navbar";
+import Loading from "../../components/Loading";
 
 const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState(""); // Store search term
@@ -39,7 +40,7 @@ const SearchPage = () => {
         
 
         {isLoading ? (
-  <p>Loading products...</p>
+<Loading/>
 ) : filteredProducts?.length > 0 ? (
   <>
     {/* Only show "Search Results" if there is a search term */}

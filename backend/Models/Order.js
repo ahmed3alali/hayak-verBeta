@@ -1,7 +1,11 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
 // Order schema
 const orderSchema = new mongoose.Schema({
+  orderNumber: {
+    type: Number,
+    unique: true, // Ensures each order number is unique
+  },
   items: [
     {
       productId: {
@@ -32,6 +36,10 @@ const orderSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  tabelNo: {
+    type: Number,
+    default: "",
+  },
   status: {
     type: String,
     default: "pending", // Status can be pending, completed, etc.
@@ -40,6 +48,15 @@ const orderSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+});
+
+// Auto-increment `orderNumber` before saving
+orderSchema.pre("save", async function (next) {
+  if (!this.orderNumber) {
+    const lastOrder = await this.constructor.findOne().sort("-orderNumber");
+    this.orderNumber = lastOrder ? lastOrder.orderNumber + 1 : 1;
+  }
+  next();
 });
 
 export default mongoose.model("Order", orderSchema);

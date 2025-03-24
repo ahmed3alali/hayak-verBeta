@@ -1,12 +1,12 @@
 import cloudinary from "cloudinary";
 import dotenv from "dotenv";
 
-dotenv.config({ path: "backend/config/config.env" });
+dotenv.config({ path: "./backend/config/config.env" });
 
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+  cloud_name: "taswoqi",
+  api_key: 284218314918295,
+  api_secret: "R8vL2iffDzXiAzcx7pFn7awa4O0",
 });
 
 export const upload_file = (file, folder) => {
