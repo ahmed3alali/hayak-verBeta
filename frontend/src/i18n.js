@@ -98,7 +98,8 @@ PNGdesc:"PNG, JPG or PDF, smaller than 15MB",
 Dragdesc: "Drag and Drop your file here or",
 ChooseFileBtn: "Choose File",
 OrderSuccess:"Order Placed Sucessfully ! ",
-confirmCompleteOrder : "Are sure order has been delivered?"
+confirmCompleteOrder : "Are sure order has been delivered?",
+betaMsg: "Sorry, this feature is only avaliable for real resturants"
     },
   },
   ar: {
@@ -200,7 +201,8 @@ PNGdesc:"PNG, JPG , PDF اصغر من 15 ميغابايت",
 Dragdesc: "اسحب الصورة الى هنا او",
 ChooseFileBtn: "اختر ملف",
 OrderSuccess:"تم استلام الطلب شكرا لكم ",
-confirmCompleteOrder : "هل انت متاكد بانه تم تسليم الطلب ؟"
+confirmCompleteOrder : "هل انت متاكد بانه تم تسليم الطلب ؟",
+betaMsg: "عذرا هذه الميزة متاحة فقط للمطاعم والمقاهي الحقيقية"
 
     },
   },
