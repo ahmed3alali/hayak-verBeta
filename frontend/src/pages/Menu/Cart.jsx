@@ -195,7 +195,7 @@ setTableNo(event.target.value);
                 </span>
               </div>
               <button
-                onClick={handleCheckout}
+                onClick={betaTempOrder}
                 className="w-full inline-block text-center bg-primary-700 py-2.5 px-5 rounded-lg text-black font-medium hover:bg-primary-800 transition duration-300"
                 disabled={loading}
               >
